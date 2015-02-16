@@ -1,0 +1,24 @@
+<td><a href="#" ui-sref="projects.details({id: project.id})">{{project.name}}</a></td>
+
+
+<td class="td--hide-mobile">{{project.owner.name}}</td>
+
+
+<td class="td--hide-mobile">{{project.end_date}}</td>
+
+
+<td class="table__td--centered">
+  <span>{{project.total_steps}}</span>
+
+  <div class="progress progress--small">
+    <span class="progress__bar" ng-style="{'width': projectsHelper.calculateProgress(project)}"></span>
+  </div>
+
+  <span ng-class="{ 'progress__current-step' : projectsHelper.hasProjectStarted(project) }">{{project.current_step}}</span>
+</td>
+
+
+<td class="table__td--centered">
+  <span ng-if="project.active" class="badge badge--active"></span>
+  <span ng-if="!project.active" class="badge badge--inactive"></span>
+</td>

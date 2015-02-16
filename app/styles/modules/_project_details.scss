@@ -5,20 +5,6 @@
     padding: 25px;
   }
 
-  .edit-show {
-    display: none;
-  }
-
-  &--editing {
-    .edit-show {
-      display: block;
-    }
-
-    .edit-hide {
-      display: none;
-    }
-  }
-
   &__info {
     position: relative;
 

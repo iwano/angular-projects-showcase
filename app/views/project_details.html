@@ -1,0 +1,128 @@
+<section class="project-details" id="project-details">
+  <div class="card">
+    <a ui-sref="projects.details({id: previous.id})" ng-if="previous" class="project-details__previous icon-arrow-previous" title="previous project"></a>
+
+
+    <header class="card__header">
+      <h1 class="card__title">
+        <span ng-if="project.active" class="badge badge--big badge--active project-details__badge"></span>
+        <span ng-if="!project.active" class="badge badge--big badge--inactive project-details__badge"></span>
+
+        {{project.name || 'New Project'}}
+      </h1>
+
+      <a ui-sref="projects.list" class="project-details__close icon-x" title="close"></a>
+    </header>
+
+
+    <div class="project-details__info" ng-hide="isEditing">
+      <div class="project-details__arrows--mobile">
+        <a ui-sref="projects.details({id: previous.id})" ng-if="previous" class="project-details__previous--small icon-arrow-previous" title="previous project"></a>
+
+        <a ui-sref="projects.details({id: next.id})" ng-if="next" class="project-details__next--small icon-arrow-next" title="next project"></a>
+      </div>
+
+
+      <section class="project-details__description">
+        <h2 class="collapsible-toggle" ng-click="isCollapsedInfo = !isCollapsedInfo"><i class="icon-collapsible-toggle"></i>Project Details</h2>
+
+        <span class="project-details__date">
+          {{project.start_date}}&nbsp;&nbsp;to&nbsp;&nbsp;{{project.end_date}}
+        </span>
+
+        <div class="collapsible-content" ng-class="{'collapse' : isCollapsedInfo}">
+          <div class="collapsible-content__wrapper">
+            {{project.description}}
+            <button type="submit" class="edit-hide btn btn--primary project-details__edit" ng-click="edit()">Edit</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="project-details__owner">
+        <h2 class="collapsible-toggle" ng-click="isCollapsedOwner = !isCollapsedOwner"><i class="icon-collapsible-toggle"></i>Project Owner</h2>
+        <div class="collapsible-content" ng-class="{'collapse' : isCollapsedOwner}">
+          <div class="collapsible-content__wrapper">
+            <img ng-src="{{projectsHelper.ownerImage(project)}}" class='owner-image'>
+
+            <span class="owner-name">{{project.owner.name}}</span>
+
+            <div class="project-details__steps-progress">
+              <div class="progress">
+                <span class="progress__bar" class="progress__bar" ng-style="{'width': projectsHelper.calculateProgress(project)}"></span>
+              </div>
+              <span class="progress__numbers">
+                <span ng-class="{ 'progress__current-step' : projectsHelper.hasProjectStarted(project) }">{{project.current_step}}</span> / {{project.total_steps}}
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <form name="project_form" class="project-details__form" ng-show="isEditing" novalidate>
+
+      <div class="label-group">
+        <label class="label-block">
+          Name:
+          <input type="text" name="name" class="input-block" ng-required="true" ng-model="project.name"/>
+        </label>
+      </div>
+
+      <div class="label-group">
+        <label class="label-block label-block--fullwidth">
+          Description:
+          <textarea name="description" class="input-block" rows="5" ng-required="true" ng-model="project.description"></textarea>
+        </label>
+      </div>
+
+      <div class="label-group">
+        <label class="label-block">
+          Owner name:
+          <input type="text" name="owner_name" class="input-block" ng-required="true" ng-model="project.owner.name"/>
+        </label>
+
+        <label class="label-block">
+          Owner image:
+          <input type="text" name="owner_image" class="input-block" ng-model="project.owner.image"/>
+        </label>
+      </div>
+
+      <div class="label-group">
+        <label class="label-block">
+          Start date:
+          <input type="text" name="start_date" data-value="{{project.start_date}}" pick-a-date="date" pick-a-date-options="{ format: 'dd/mm/yyyy' }" class="input-block" ng-model="project.start_date"/>
+        </label>
+
+        <label class="label-block">
+          End date:
+          <input type="text" name="end_date" data-value="{{project.end_date}}" pick-a-date="date" pick-a-date-options="{ format: 'dd/mm/yyyy' }" class="input-block" ng-model="project.end_date"/>
+        </label>
+      </div>
+
+      <div class="label-group">
+        <label class="label-block">
+          Total steps:
+          <input type="number" name="total_steps" class="input-block" min="1" ng-model="project.total_steps"/>
+        </label>
+
+        <label class="label-block">
+          Current step:
+          <input type="number" name="current_step" class="input-block" min="0" ng-model="project.current_step"/>
+        </label>
+      </div>
+
+      <div class="label-group">
+        <label class="label-block">
+          Is active?:
+          <input type="checkbox" name="active" class="input-block" ng-model="project.active"/>
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn--primary" ng-click="save(project_form)">Save</button>
+      <button class="btn btn--secondary" ng-click="cancelEdit()">Cancel</button>
+    </form>
+
+    <a ui-sref="projects.details({id: next.id})" ng-if="next" class="project-details__next icon-arrow-next" title="next project"></a>
+  </div>
+</section>

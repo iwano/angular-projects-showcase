@@ -8,24 +8,43 @@
  *
  * Main module of the application.
  */
+
 angular
   .module('projectsShowcaseApp', [
     'angularMoment',
     'angular-datepicker',
     'ngTouch',
-    'ui.router'
+    'ui.router',
+    'angular-lodash'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider
+      .otherwise('/projects');
+
+    $stateProvider
+      .state('projects', {
+        abstract: true,
+        url: '/projects',
+        template: '<ui-view/>',
+        resolve: {
+          projects: function (projectsFixtures) {
+            return projectsFixtures;
+          }
+        }
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .state('projects.list', {
+        url: '',
+        templateUrl: 'views/projects.html',
+        controller: 'ProjectsCtrl'
       })
-      .otherwise({
-        redirectTo: '/'
+      .state('projects.details', {
+        url: '/:id',
+        templateUrl: 'views/project_details.html',
+        controller: 'ProjectDetailsCtrl'
+      })
+      .state('projects.new', {
+        url: '/new',
+        templateUrl: 'views/project_details.html',
+        controller: 'ProjectDetailsCtrl'
       });
   });

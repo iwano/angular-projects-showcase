@@ -25,6 +25,8 @@ module.exports = function(config) {
       'bower_components/angular-native-picker/build/angular-datepicker.js',
       'bower_components/angular-moment/angular-moment.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
+      'bower_components/lodash/dist/lodash.compat.js',
+      'bower_components/angular-lodash/angular-lodash.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
