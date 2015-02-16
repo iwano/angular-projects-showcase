@@ -15,6 +15,7 @@ angular.module('projectsShowcaseApp')
     this.hasProjectStarted = hasProjectStarted;
     this.ownerImage        = ownerImage;
     this.convertDate       = convertDate;
+    this.beautifyDate       = beautifyDate;
 
     function calculateProgress(project) {
       return (project.current_step * 100 / project.total_steps) + '%';
@@ -30,5 +31,9 @@ angular.module('projectsShowcaseApp')
 
     function convertDate(date) {
       return isNaN(date) ? moment(date, 'DD/MM/YYYY').format('DD/MM/YYYY') : moment(date).format('DD/MM/YYYY');
+    }
+
+    function beautifyDate(date) {
+      return isNaN(date) ? moment(date, 'DD/MM/YYYY').format('MMM DD, YYYY') : moment(date).format('MMM DD, YYYY');
     }
   });

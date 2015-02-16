@@ -56,7 +56,6 @@ angular.module('projectsShowcaseApp')
     }
 
     function save(form) {
-      debugger;
       if (!form.$valid) return;
       $scope.originalProject = $scope.defaultProject;
       convertDates();
