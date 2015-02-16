@@ -57,6 +57,7 @@ angular.module('projectsShowcaseApp')
 
     function save(form) {
       if (!form.$valid) return;
+      !_.find($scope.projects, $scope.project) && $scope.projects.push($scope.project);
       $scope.originalProject = $scope.defaultProject;
       convertDates();
       $scope.isEditing = false;
