@@ -1,0 +1,64 @@
+.btn, a.btn {
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: $button-color;
+  font-size: 15px;
+  height: 36px;
+  line-height: 15px;
+  padding: 10px 15px;
+  text-decoration: none;
+
+  &--primary {
+    background: $primary;
+
+    &:hover {
+      background: $primary-hover;
+    }
+  }
+
+  &--secondary {
+    background: $secondary;
+
+    &:hover {
+      background: $secondary-hover;
+    }
+  }
+}
+
+.btn-group {
+  font-size: 0;
+
+  .btn {
+    background: $button-color;
+    border: 1px solid $button-inactive;
+    color: $button-inactive;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    font-style: italic;
+    height: 28px;
+    letter-spacing: 1px;
+    line-height: 12px;
+    padding: 7px 8px;
+
+    & ~ .btn {
+      margin-left: 14px;
+    }
+
+    &:hover {
+      background: $button-color-hover;
+    }
+  }
+
+  input[type='radio'] {
+    display: none;
+  }
+
+  input[type='radio']:checked + .btn {
+    cursor: default;
+    background: $primary;
+    border-color: $primary;
+    color: $button-color;
+  }
+}

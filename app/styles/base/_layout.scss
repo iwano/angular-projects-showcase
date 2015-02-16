@@ -1,0 +1,26 @@
+body {
+  background: $background-primary;
+}
+
+#main-content {
+  margin: 5% 0;
+  min-width: 320px;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+
+  &:active, &:visited {
+    color: $link-color;
+  }
+
+  &:hover {
+    color: $link-color-hover;
+    text-decoration: underline;
+  }
+}
+
+input {
+  line-height: 30px;
+}

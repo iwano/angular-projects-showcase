@@ -1,0 +1,144 @@
+.project-details {
+  padding: 0 70px;
+
+  .card {
+    padding: 25px;
+  }
+
+  .edit-show {
+    display: none;
+  }
+
+  &--editing {
+    .edit-show {
+      display: block;
+    }
+
+    .edit-hide {
+      display: none;
+    }
+  }
+
+  &__info {
+    position: relative;
+
+    section {
+      border-bottom: 2px solid $card-border;
+      line-height: 23px;
+      padding-right: 24px;
+      position: relative;
+    }
+  }
+
+  &__date {
+    color: $text-color-light;
+    font-size: 15px;
+    position: absolute;
+    right: 34px;
+    top: 10px;
+  }
+
+  &__owner .collapsible-content__wrapper {
+    padding-left: 48px;
+  }
+
+  &__close {
+    background-size:  20px;
+    display: inline-block;
+    height: 20px;
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    width: 20px;
+  }
+
+  &__previous, &__next {
+    background-size: 50px;
+    height: 50px;
+    margin-top: -25px;
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    &:hover {
+      background-size: 50px;
+    }
+  }
+
+  &__previous--small, &__next--small {
+    background-size: 30px;
+    height: 30px;
+    margin-top: 10px;
+    width: 30px;
+    &:hover {
+      background-size: 30px;
+    }
+  }
+
+  &__previous--small {
+    float: left;
+  }
+
+  &__next--small {
+    float: right;
+  }
+
+  &__previous {
+    left: -70px;
+  }
+
+  &__next {
+    right: -70px;
+  }
+
+  .project-details__edit {
+    display: block;
+    float: right;
+    position: relative;
+    top: 26px;
+  }
+
+  .owner-image {
+    width: 50px;
+  }
+
+  .owner-name {
+    bottom: 10px;
+    color: $owner-name-color;
+    font-size: 18px;
+    margin-left: 10px;
+    position: relative;
+  }
+
+  .progress {
+    margin-top: 20px;
+
+    &__numbers {
+      bottom: 9px;
+      display: inline-block;
+      font-size: 20px;
+      margin-left: 5px;
+      position: relative;
+    }
+
+    &__current-step {
+      color: $progress-steps-bar-color;
+    }
+  }
+
+  .card__header {
+    height: 26px;
+    padding-bottom: 25px;
+  }
+
+  h2 {
+    font-size: 21px;
+    margin: 30px 0;
+  }
+}
+
+.project-details__arrows--mobile {
+  clear: both;
+  display: none;
+  margin-bottom: -15px;
+  overflow: hidden;
+}

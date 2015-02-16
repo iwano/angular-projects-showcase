@@ -10,8 +10,10 @@
  */
 angular
   .module('projectsShowcaseApp', [
-    'ngRoute',
-    'ngTouch'
+    'angularMoment',
+    'angular-datepicker',
+    'ngTouch',
+    'ui.router'
   ])
   .config(function ($routeProvider) {
     $routeProvider

@@ -1,0 +1,39 @@
+i[class*="icon"], a[class*="icon"] {
+  display: inline-block;
+}
+
+.icon-x {
+  background-image: image_url('x.svg');
+}
+
+.icon-arrow-previous {
+  background-image: image_url('left-arrow.svg');
+
+  &:hover {
+    background-image: image_url('left-arrow-hover.svg');
+  }
+}
+
+.icon-arrow-next {
+  background-image: image_url('right-arrow.svg');
+
+  &:hover {
+    background-image: image_url('right-arrow-hover.svg');
+  }
+}
+
+.icon-sort-indicator {
+  border-bottom: 5px solid $table-header-color;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  height: 0;
+  width: 0;
+}
+
+.icon-sort-indicator--reversed {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid $table-header-color;
+  height: 0;
+  width: 0;
+}
